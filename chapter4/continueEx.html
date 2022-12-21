@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 조건식을 잘만들어야한다 break, continue 남용주의!!
+        let output = 0
+
+        for(let i = 1; i <= 10; i++){
+            if (i % 2 === 1){
+                // 홀수면 중지하고 다음 반복 수행
+                continue
+            }
+            output += 1
+        }
+        alert(output)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
