@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const h1 = document.querySelector('h1')
+            const print = (event) => {
+                let output = ''
+                output += `alt: ${event.altKey}<br>`
+                output += `ctrl: ${event.ctrlKey}<br>`
+                output += `shift: ${event.shiftKey}<br>`
+                output += `code: ${typeof(event.code) !== 'undefined' ? event.code : event.keyCode}<br>` // event.code가 있으면 event.code를 출력하고 undefined라면 event.keyCode를 출력
+                h1.innerHTML = output
+            }
+            document.addEventListener('keydown', print)
+            document.addEventListener('keyup', print)
+        })
+    </script>
+</head>
+<body>
+    <h1></h1>
+</body>
+</html>
+<!-- 
+code / 입력한키
+keyCode / 입련한 키를 나타내는 숫자
+altKey / alt 키를 눌렀는지
+ctrlKey / ctrl 키를 눌렀는지
+shiftKey / shift 키를 눌렀는지 -->

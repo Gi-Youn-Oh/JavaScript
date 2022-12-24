@@ -1,0 +1,43 @@
+
+sortBY() 정렬
+Luxon / date-fns() 날짜와 시간
+Handsontable() 웹페이지에 스프레드시트를 출력
+D3.js / ChartJS  그래프를 그릴 수 있음
+Three.js 3차원 그래픽
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script>
+        // 데이터 생성
+        const books = [{
+            name: '혼자 공부하는 파이썬',
+            price: 18000,
+            publisher: '한빛미디어'
+        },{
+            name: 'HTML5 웹 프로그래밍 입문',
+            price: 26000,
+            publisher: '한빛미디어'
+        },{
+            name: '머신러닝 딥러닝 실전 개발 입문',
+            price: 30000,
+            publisher: '한빛미디어'
+        },{
+            name: '딥러닝을 위한 수학',
+            price: 25000,
+            publisher: '한빛미디어'
+        }]
+
+        // 가격으로 정렬한 뒤 출력
+        const output = _.sortBy(books, (book) => book.price)
+        console.log(JSON.stringify(output, null, 2))
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

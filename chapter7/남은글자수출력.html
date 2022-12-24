@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const textarea = document.querySelector('textarea')
+            const h1 = document.querySelector('h1')
+
+            textarea.addEventListener('keyup', (event) => {
+                const length = textarea.value.length   // value 속성으로 입력 양식의 글자를 읽어들일 수 있다.
+                h1.textContent = `글자 수: ${length}`
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1></h1>
+    <textarea></textarea>
+</body>
+</html>
+
+셋다 문제점 있음
+keydown /  키가 눌릴 때 실행 키보드를 꾹누르고 있을 때도, 입력될 때도 실행 
+keypress / 키가 입력되었을 때 실행, 웹브라우저에 따라서 아시아권의 문자를 제대로 처리하지 못하는 경우도 있음
+keyup / 키보드에서 키가 떨어질 때 실행 

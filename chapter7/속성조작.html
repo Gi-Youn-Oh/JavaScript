@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const rects = document.querySelectorAll('.rect')
+
+            rects.forEach((rect, index) => {
+                const width = (index + 1) * 100 // index [0,1,2,3] 반복 +1 1,2,3,4 * 100 width =100,200,300,400
+                const src = `http://placekitten.com/${width}/250`
+                rect.setAttribute('src',src) //src 속성에 값을 지정
+            })
+        })
+    </script>
+</head>
+<body>
+    <img class="rect">
+    <img class="rect">
+    <img class="rect">
+    <img class="rect">
+</body>
+</html>
+
+간단한 속성지정
+<script>
+    rects.forEach((rect, index) => {
+        const width = (index + 1) * 100
+        const src = `http://placekitten.com/${width}/250`
+        rect.src = src //simple version 
+    })
+</script>

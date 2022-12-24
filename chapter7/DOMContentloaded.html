@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DOMContentLoaded</title>
+    <script>
+        // DOMContentLoaded 이벤트는 웹브라우저가 문서객체를 모두 읽고 나서 실행하는 이벤트 
+        // DOMContentLoaded 이벤트를 연결합니다.
+        document.addEventListener('DOMContentLoaded', () => {
+            const h1 = (text) => `<h1>${text}</h1>`
+            document.body.innerHTML += h1('DOMContentLoaded 이벤트 발생') //문서 객체를 모두 읽어들이면 이 콜백함수가 실행된다.
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

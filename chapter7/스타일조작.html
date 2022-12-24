@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const divs = document.querySelectorAll('body > div') // body 태그 아래 div 태그 선택
+            
+            divs.forEach((div,index) => { // div개수만큼 반복 출력
+                console.log(div, index)
+                const val = index * 10 // 인덱스 0~24 반복
+                div.style.height = `10px`  // 크기 지정시 반드시 단위 붙이기
+                div.style.backgroundColor = `rgba(${val}, ${val}, ${val})`
+            })
+        })
+    </script>
+</head>
+<body>
+    <!-- div 태그 25개 -->
+    <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div><div></div>
+</body>
+</html>
+
+
+<!--  -->
+css 
+background-color
+
+javascript
+backgroundColor // 단어 첫글자를 대문자로 쓰는 것 = camelcase 캐멀케이스
+
+1. h1.style.backgroundColor
+2. h1.style['backgroundColor']
+3. h1.style['background-color']
+ 
