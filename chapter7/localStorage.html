@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const p = document.querySelector('p')
+            const input = document.querySelector('input')
+            const button = document.querySelector('button')
+
+            const savedValue = localStorage.getItem('input') // 값을 읽을 때
+            // localStorage.input 도 사용 가능
+            if (savedValue) {
+                input.value = savedValue
+                p.textContent = `이전 실행 때의 마지막 값: ${savedValue}`
+            }
+
+            input.addEventListener('keyup', (event) => {
+                const value = event.currentTarget.value
+                localStorage.setItem('input', value) //값을 저장
+                //localStorage.input = value 도 사용 가능
+            })
+
+            button.addEventListener('click', (event) => {
+                localStorage.clear() // 값을 제거
+                input.value = ''
+            })
+        })
+    </script>
+</head>
+<body>
+    <p></p>
+    <button>지우기</button>
+    <input type="text">
+</body>
+</html>
+
+<!-- localStorage.getItem(키) : 저장된 값을 추출합니다.
+localStorage.setItem(키,값) : 값을 저장합니다.
+localStorage.removeItem(키) : 특정 키의 값을 제거합니다.
+localStorage.clear() : 저장된 모든 값을 제거합니다. -->

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>할 일 목록</h1>
+    <input id="todo">
+    <button id="add-button">추가하기</button>
+    <div id="todo-list">
+
+        
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        //문서 객체를 가져옵니다.
+        const input = document.querySelector('#todo')
+        const todoList = document.querySelector('#todo-list')
+        const addButton = document.querySelector('#add-button')
+        
+        //변수를 선언합니다.
+        let keyCount = 0 // 이후에 removeTodo()함수에서 문서 객체를 쉽게 제거하기 위한 용도로 만든 변수
+
+        //함수를 선언합니다.
+        const addTodo = () => {
+            //입력 양식에 내용이 없으면 추가하지 않습니다.
+            if (input.value.trim() === ''){
+                alert('할 일을 입력해주세요.')
+                return
+            }
+
+            //문서 객체를 설정합니다.
+            const item = document.createElement('div')
+            const checkbox = document.createElement('input')
+            const text = document.createElement('span')
+            const button = document.createElement('button')
+
+            //문서 객체를 식별할 키를 생성합니다.
+            const key = keyCount //이후에 removeTodo()함수에서 문서 객체를 쉽게 제거하기 위한 용도로 만든 변수이다.
+            keyCount += 1
+
+            //item 객체를 조작하고 추가합니다.
+            item.setAttribute('data-key', key) // <div data-key='숫자'>
+            item.appendChild(checkbox)         // <input>
+            item.appendChild(text)             // <span></span>
+            item.appendChild(button)           // <button></button>
+            todoList.appendChild(item)         // </div> 형태를 구성
+
+            //checkbox 객체를 조작합니다.
+            checkbox.type = 'checkbox' // <input type = "checkbox"> 형태를 구성합니다.
+            checkbox.addEventListener('change', (event) => { //체크박스를 클릭하면 선을 그어줍니다.
+                item.style.textDecoration = event.target.checked ? 'line-through' : ''
+            })
+
+            // text 객체를 조작합니다.
+            text.textContent = input.value //<span></span>형태를 구성합니다.
+
+            // button 객체를 조작합니다.
+            button.textContent = '제거하기'
+            button.addEventListener('click', () => { // <button>제거하기</button> 형태를 구성
+                removeTodo(key)
+            })
+
+            //입력 양식의 내용을 비웁니다.
+            input.value = '' 
+        }
+
+        const removeTodo = (key) => { 
+            // 식별 키로 문서 객체를 제거합니다.
+            const item = document.querySelector(`[data-key="${key}"]`) //위에서 지정한 <div data-key='숫자'>를 기반으로 요소를 찾고 제거합니다.
+            todoList.removeChild(item)
+        }
+
+        //이벤트 연결
+        addButton.addEventListener('click', addTodo)
+        input.addEventListener('keyup', (event) => {
+            // 입력양식에서 Enter 키를 누르면 바로 addTodo() 함수를 호출합니다.
+            const ENTER = 13
+            if (event.keyCode === ENTER){
+                addTodo()
+            }
+        })
+    })
+</script>
+</html>

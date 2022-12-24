@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const imgs = document.querySelectorAll('img')
+
+            imgs.forEach((img) => {
+                img.addEventListener('contextmenu', (event) => {
+                    event.preventDefault()  // 컨텍스트 메뉴를 출력하는 기본 이벤트를 제거
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <img src="http://placekitten.com/300/300" alt="">
+</body>
+</html>
+
+이미지 불펌방지
