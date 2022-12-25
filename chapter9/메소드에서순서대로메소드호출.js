@@ -1,0 +1,14 @@
+
+class LifeCycle{
+    call(){
+        this.a()
+        this.b()
+        this.c()
+    }
+
+    a() { console.log (`a()메소드를 호출합니다.`)}
+    b() { console.log (`b()메소드를 호출합니다.`)}
+    c() { console.log (`c()메소드를 호출합니다.`)}
+}
+
+new LifeCycle().call()
