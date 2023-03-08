@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <!-- 리액트 사용 준비 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/bable.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- 리액트를 사용하는 코드 입력 -->
+    <script type="text/babel">
+        // 일반적으로 루트 컴포넌트는 App 이름 사용
+        // 애플리케이션 클래스 생성하기
+        class App extends React.Component {
+        render(){
+            return <h1>리액트 기본</h1>
+        }
+    }
+
+    const container = document.getElementById('root')
+    reactDOM.render(<App />, container)
+    </script>
+</body>
+</html>
+
+클래스 컴포넌트 만들기
+class 컴포넌트 이름 extends React.Component {
+    render() {
+        return <h1>출력할 것</h1>
+    }
+}
