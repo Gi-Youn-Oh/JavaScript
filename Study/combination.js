@@ -1,29 +1,32 @@
-/**
- * 순열에 경우 [a,b,c,d] 배열이 있을 경우 a 를 선택하면 [b,c,d]가 잔여 배열로 남고 b를 선택하면 [a,c,d] 가 남고, 이런 식으로 이전 잔여배열에서 선택한 것만 제거한 배열을 남기지만
- *
- * 조합에 경우 [a,b,c,d] 배열이 있을 경우 a를 선택하면 [b,c,d]가 잔여 배열로 남고 b를 선택하면 [c,d]만을 남긴다. c를 선택할 시 [d] 만을 잔여배열로 남기면 된다.
- *
- * 조합에 경우 a,b,c,d 나 b,a,c,d 를 동일하게 보기 때문에 (순서가 중요하지 않음) b를 뽑은 조합에 경우 a를 잔여배열로 남기지 않을 경우 [a,b,c,d] 와 [b,a,c,d] 등에 중복된 경우에 수를 제거할 수 있다.
- */
+// 시작
+//     1을 선택(고정)하고 -> 나머지 [2,3,4] 중에서 2개씩 조합을 구한다. 그리고 그 각각을 고정했던 1에 이어붙인다.
+//     [1,2,3], [1,2,4], [1,3,4]
 
-// 1. 선별배열은 빈배열, 잔여배열을 원본배열로 생각한다.
-// 2. 잔여배열 내의 원소를 하나씩 순회하며.forEach(value =>
-//  2-1. 선별배열에 조회된 원소(value) 를 넣는다.
-//  2-2. 잔여배열을 선별된 원소의 인덱스 뒤 부분을 잔여배열로 재정의한다.
-//  2-3. 2-2 까지의 과정을 하나의 함수로 만들어 재귀함수를 호출한다. 새로운 선별배열, 잔여배열을 인자로 받도록한다!
-// 3. 만약 선별된 배열이 특정 length를 달성 시, 재귀호출을 종료 하고 조회가 가능하도록 외부 output 배열에 기록한다.
+//     2를 선택(고정)하고 -> 나머지 [3,4] 중에서 2개씩 조합을 구한다. 그리고 그 각각을 고정했던 2에 이어붙인다.
+//     [2,3,4]
 
-// combi = 선별 배열, rests = 잔여 배열
-const combination = (combi, rests, output) => {
-    if (combi.length == 0) {
-        return output.push(combi);
-    }
-    rests.forEach((v, idx) => {
-        const rest = rests.slice(idx + 1);
-        combination(([...combi, v], rest, output));
-    })
-}
+//     3을 선택(고정)하고 -> 나머지 [4] 중에서 2개씩 조합을 구한다.
+//     []
 
-const output = [];
-combination(([], ['a', 'b', 'c', 'd'], output));
+//     4을 선택(고정)하고 -> 나머지 [] 중에서 2개씩 조합을 구한다.
+//     []
+// 종료
 
+const getCombinations = function (arr, selectNumber) {
+    const results = [];
+    if (selectNumber === 1) return arr.map((value) => [value]); // 1개씩 택할 때, 바로 모든 배열의 원소 return
+  
+    arr.forEach((fixed, index, origin) => {
+      const rest = origin.slice(index + 1); // 해당하는 fixed를 제외한 나머지 뒤
+      const combinations = getCombinations(rest, selectNumber - 1); // 나머지에 대해서 조합을 구한다.
+      const attached = combinations.map((combination) => [fixed, ...combination]); //  돌아온 조합에 떼 놓은(fixed) 값 붙이기
+      results.push(...attached); // 배열 spread syntax 로 모두 다 push
+    });
+  
+    return results; // 결과가 담긴 results를 return
+  };
+  
+  const arr = [1, 2, 3, 4];
+  const result = getCombinations(arr, 3);
+  console.log(result);
+  // => [ [ 1, 2, 3 ], [ 1, 2, 4 ], [ 1, 3, 4 ], [ 2, 3, 4 ] ]
