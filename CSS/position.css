@@ -1,0 +1,72 @@
+/* 1. static 원래의 위치에 배치 */
+
+/* div 기본적으로 block tag */
+/* div {
+    display: inline;
+} */
+
+main {
+    width: 300px;
+    height: 130px;
+    background: tomato;
+    overflow: auto;
+    position: relative;
+}
+
+div {
+    width: 200px;
+    height: 100px;
+    border: 1px soild;
+    background: yellow;
+    text-align: center;
+    line-height: 100px;
+    box-sizing: border-box;
+}
+
+/* div:nth-of-type(2) {
+    position: static;
+    background: cyan;
+    opacity:0.8;
+} */
+
+/* 2. relative 원래 위치에서 상대적으로 떨어져 있게 조정*/
+
+/* div:nth-of-type(2) {
+    position: relative;
+    top: 28px;
+    left: 48px;
+    background: cyan;
+    opacity:0.8;
+} */
+
+/* 3. absoulte 절대적인 위치 xx 배치기준을 자신이 아닌 상위 요소에서 찾는다. DOM트리를 따라 올라가다가 position 속성이 static이 아닌 첫 번째 상위 요소가 해당 요소의 배치 기준으로 설정
+만약 없다면 DOM 트리 최상위에 있는 <body>요소가 배치 기준이 된다.*/
+/* 상위요소를 기준으로 배치하고 싶을 때  사용하며, 상위요소는 보통 관습적으로 relative로 설정 */
+
+/* div:nth-of-type(2) {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    background: cyan;
+    opacity:0.8;
+} */
+
+/* 4. fixed 스크롤 시에도 고정 위치 사용 
+자신이나 부모요소가 아닌 뷰포트가 배치기준이다.*/
+
+/* div:nth-of-type(2) {
+    position: fixed;
+    bottom: 8px;
+    right: 16px;
+    background: cyan;
+    opacity:0.8;
+} */
+
+/* 5. sticky  */
+
+div:nth-of-type(2) {
+    position: sticky;
+    top: 0px;
+    background: cyan;
+    opacity:0.8;
+}

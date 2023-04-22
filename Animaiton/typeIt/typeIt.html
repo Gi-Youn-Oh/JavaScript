@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    <style>
+        :root {
+            --ti-cursor-margin-left: 0.1em;
+            --ti-cursor-color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+    <h1 id = "title">Giyoun Studying JavaScript</h1>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new TypeIt('#title')
+            .pause(1000)
+            .delete(10, {delay:1000})
+            .type('Front-End')
+            .go()
+        })
+    </script>
+</body>
+</html>
